@@ -34,8 +34,20 @@
 
 .btn1 {
   margin-left: 120px;
+  margin-right: 20px;
 }
 
 .btn2 {
   margin-left: 20px;
+}
+
+.cancelbtn {
+  width: 100px;
+  height: 40px;
+  margin-right: 20px;
+  margin-left: 40px;
+}
+
+.ant-form-item .ant-form-item-has-feedback .ant-form-item-has-success {
+  width: 150px;
 }
