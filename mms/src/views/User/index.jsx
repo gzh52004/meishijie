@@ -142,12 +142,12 @@ const User = (props) => {
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
 const config = {
-  rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+  rules: [{ type: 'object', required: true, message: '请选择生日' }],
 }
 const onFinish = fieldsValue => {
   const values = {
     ...fieldsValue,
-    'date-picker': moment(value.fieldsValue['date-picker']).format('YYYY-MM-DD'),
+    'date-picker': fieldsValue['date-picker'].format('YYYY-MM-DD'),
   };
   console.log('时间', values);
 };
@@ -155,12 +155,10 @@ const onFinish = fieldsValue => {
 
 const formItemLayout = {
   labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 },
+    span: 4 
   },
   wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 16 },
+    span: 16
   },
 };
 const tailFormItemLayout = {
@@ -185,9 +183,6 @@ const Newput = (props) => {
   const onFinish = values => {
     console.log('Received values of form: ', values);
   };
-
-  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-
 
   return (
     <Form
@@ -216,7 +211,7 @@ const Newput = (props) => {
         hasFeedback
         rules={[{ required: true, message: '请选择您的性别' }]}
       >
-        <Select placeholder="请选择您的性别" style={{width:200}}>
+        <Select placeholder="请选择您的性别" style={{width:150}}>
           <Option value="男">男</Option>
           <Option value="女">女</Option>
         </Select>
