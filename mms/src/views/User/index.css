@@ -34,8 +34,15 @@
 
 .btn1 {
   margin-left: 120px;
+  margin-right: 20px;
 }
 
 .btn2 {
   margin-left: 20px;
+}
+
+.cancelbtn {
+  width: 100px;
+  height: 40px;
+  margin-right: 20px;
 }

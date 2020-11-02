@@ -87,6 +87,7 @@ const Changepsw = (props) => {
     >
 
       <Form.Item
+      style={{width:430}}
         name="oldPassword"
         label="旧密码"
         rules={[
@@ -100,6 +101,7 @@ const Changepsw = (props) => {
         <Input.Password />
       </Form.Item>
       <Form.Item
+      style={{width:430}}
         name="newPassword"
         label="新密码"
         rules={[
@@ -114,6 +116,7 @@ const Changepsw = (props) => {
       </Form.Item>
 
       <Form.Item
+       style={{width:430}}
         name="confirm"
         label="确认密码"
         dependencies={['newPassword']}

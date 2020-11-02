@@ -1,9 +1,8 @@
 import React, { useCallback, useEffect, useState, useLayoutEffect } from 'react';
 import './index.scss'
 import request from '@/utils/request';
-import { Breadcrumb, Table, Tag, Space, Button, Input } from 'antd';
-
-import { UserOutlined, HomeOutlined } from '@ant-design/icons';
+import { Breadcrumb, Table, Tag, Space, Button, Input, Form,  Tooltip, Cascader, Select, Row, Col, Checkbox, AutoComplete, Modal, DatePicker} from 'antd';
+import { UserOutlined, HomeOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 
 
 
@@ -85,9 +84,8 @@ const User = (props) => {
       <Button type="primary" className="btn1">
         重置
         </Button>
-      <Button type="primary" className="btn2">
-        新增
-        </Button>
+        {/* 新增 */}
+       < Open/>
       <Breadcrumb>
         <Breadcrumb.Item >
           <HomeOutlined />
@@ -120,4 +118,166 @@ const User = (props) => {
     </div>
   )
 }
+
+
+const { Option } = Select;
+const AutoCompleteOption = AutoComplete.Option;
+const config = {
+  rules: [{ type: 'object', required: true, message: 'Please select time!' }],
+}
+const onFinish = fieldsValue => {
+  const values = {
+    ...fieldsValue,
+    'date-picker': moment(value.fieldsValue['date-picker']).format('YYYY-MM-DD'),
+  };
+  console.log('时间', values);
+};
+
+
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 8 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 16 },
+  },
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span:18,
+      offset: 6,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
+
+const Newput = (props) => {
+//解构 onOk, onCancel 方法
+  const { onOk, onCancel } = props
+
+  const [form] = Form.useForm();
+
+  const onFinish = values => {
+    console.log('Received values of form: ', values);
+  };
+
+  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
+
+
+  return (
+    <Form
+      {...formItemLayout}
+      form={form}
+      name="register"
+      onFinish={onFinish}
+      // initialValues={{}} 默认值填写
+      scrollToFirstError
+    >
+      <Form.Item
+        name="username"
+        label={
+          <span>
+            用户名
+          </span>
+        }
+        rules={[{ required: true, message: '请输入用户名', whitespace: true }]}
+      >
+        <Input style={{width:250}} />
+      </Form.Item>
+
+      <Form.Item
+        name="sex"
+        label="性别"
+        hasFeedback
+        rules={[{ required: true, message: '请选择您的性别' }]}
+      >
+        <Select placeholder="请选择您的性别" style={{width:200}}>
+          <Option value="男">男</Option>
+          <Option value="女">女</Option>
+        </Select>
+      </Form.Item>
+
+      <Form.Item name="date-picker" label="生日" {...config} >
+        <DatePicker />
+        </Form.Item>
+
+      <Form.Item
+        name="phone"
+        label="手机号码"
+        rules={[{ required: true, message: '请输入您的手机号码' },
+        {min:11, max:11, message:'请输入11位的手机号码'}
+      ]}
+      >
+        <Input style={{width:250}}/>
+      </Form.Item>
+    
+      <Form.Item
+        name="address"
+        label="地址"
+        rules={[{ required: true, message: '请输入地址' }]}
+      >
+          <Input />
+      </Form.Item>
+       
+      <Form.Item {...tailFormItemLayout}>
+      <Button className='cancelbtn' onClick={() => onCancel()}> 
+         取消
+        </Button>
+        <Button type="primary" htmlType="submit">
+          确认
+        </Button>
+      </Form.Item>
+    </Form>
+  );
+};
+
+class Open extends React.Component {
+  state = { visible: false };
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+
+  handleOk = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+
+  handleCancel = e => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
+  };
+
+  render() {
+    return (
+      <>
+        <Button type="primary" onClick={this.showModal}>
+          新增
+        </Button>
+        <Modal
+          title="新增用户"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        >
+          <Newput onOk={this.handleOk}  onCancel={this.handleCancel} />
+        </Modal>
+      </>
+    );
+  }
+}
+
+
 export default User
