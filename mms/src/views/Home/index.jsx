@@ -21,7 +21,7 @@ const User = lazy(() => import("../User"));
 const Goods = lazy(() => import("../Goods"));
 const Order = lazy(() => import("../Order"));
 const Collect = lazy(() => import("../Collect"));
-const Headers = lazy(() => import("@/component/headers"));
+const Headers = lazy(() => import("@/components/headers"));
 
 
 const { Header, Footer, Sider, Content } = Layout;
