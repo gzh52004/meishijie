@@ -187,6 +187,7 @@ const Newput = (props) => {
   };
 
   return (
+    <div className="home">
     <Form
       {...formItemLayout}
       form={form}
@@ -250,6 +251,7 @@ const Newput = (props) => {
         </Button>
       </Form.Item>
     </Form>
+    </div>
   );
 };
 
