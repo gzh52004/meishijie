@@ -106,17 +106,17 @@ let Home = (props) => {
 
                             >
                                 {/* <Menu.Item key="1" icon={<UserOutlined />}>
-              用户管理
-            </Menu.Item>
-            <Menu.Item key="2" icon={<CalendarOutlined />}>
-              菜品管理
-            </Menu.Item>
-            <Menu.Item key="3" icon={<AppstoreOutlined />}>
-              订单管理
-            </Menu.Item>
-            <Menu.Item key="4" icon={<MailOutlined />}>
-              收藏管理
-            </Menu.Item> */}
+                                    用户管理
+                                    </Menu.Item>
+                                    <Menu.Item key="2" icon={<CalendarOutlined />}>
+                                    菜品管理
+                                    </Menu.Item>
+                                    <Menu.Item key="3" icon={<AppstoreOutlined />}>
+                                    订单管理
+                                    </Menu.Item>
+                                    <Menu.Item key="4" icon={<MailOutlined />}>
+                                    收藏管理
+                                    </Menu.Item> */}
 
                                 {/* 循环渲染导航栏 */}
                                 {

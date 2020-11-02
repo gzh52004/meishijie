@@ -103,8 +103,8 @@ const User = (props) => {
         </Breadcrumb.Item>
         <Breadcrumb.Item>用户管理</Breadcrumb.Item>
       </Breadcrumb>
-
-      <Table dataSource={data}>
+       {/* <Table>表单要加key值 rowKey='_id'*/}
+      <Table dataSource={data} rowKey='_id'>
         <Column title="姓名" dataIndex="name" key="name" />
         <Column title="性别" dataIndex="sex" key="sex" />
         <Column title="生日" dataIndex="birthday" key="birthday" />
@@ -144,13 +144,13 @@ const AutoCompleteOption = AutoComplete.Option;
 const config = {
   rules: [{ type: 'object', required: true, message: '请选择生日' }],
 }
-const onFinish = fieldsValue => {
-  const values = {
-    ...fieldsValue,
-    'date-picker': fieldsValue['date-picker'].format('YYYY-MM-DD'),
-  };
-  console.log('时间', values);
-};
+// const onFinish = fieldsValue => {
+//   const values = {
+//     ...fieldsValue,
+//     'date-picker': fieldsValue['date-picker'].format('YYYY-MM-DD'),
+//   };
+//   console.log('时间', values);
+// };
 
 
 const formItemLayout = {
@@ -181,6 +181,8 @@ const Newput = (props) => {
   const [form] = Form.useForm();
 
   const onFinish = values => {
+    //format预处理成目标格式并重新赋值
+    values['birthday'] = values['birthday'].format('YYYY-MM-DD')
     console.log('Received values of form: ', values);
   };
 
@@ -217,8 +219,8 @@ const Newput = (props) => {
         </Select>
       </Form.Item>
 
-      <Form.Item name="date-picker" label="生日" {...config} >
-        <DatePicker />
+      <Form.Item name="birthday" label="生日" {...config} >
+        <DatePicker placeholder="请选择日期" />
         </Form.Item>
 
       <Form.Item

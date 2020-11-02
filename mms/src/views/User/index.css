@@ -51,3 +51,11 @@
 .ant-form-item .ant-form-item-has-feedback .ant-form-item-has-success {
   width: 150px;
 }
+
+.ant-form-item-control-input .ant-form-item-control-input-content {
+  width: 150px;
+}
+
+.ant-form-item-has-feedback.ant-form-item-has-success .ant-form-item-children-icon {
+  right: 130px;
+}
