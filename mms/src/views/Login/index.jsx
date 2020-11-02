@@ -121,12 +121,12 @@ let Login = (props) => {
                 </Form.Item>
 
                 <Form.Item {...tailLayout}>
-                    <Button type="primary" htmlType="submit" style={{ marginRight: "20px" }} onClick={() => {
+                    <Button className="btn3" type="primary" htmlType="submit" style={{ marginRight: "20px" }} onClick={() => {
                         props.history.push('/reg')
                     }}>
                         注册
             </Button>
-                    <Button type="primary" htmlType="submit">
+                    <Button className="btn4" type="primary" htmlType="submit">
                         登录
             </Button>
                 </Form.Item>

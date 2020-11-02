@@ -8,6 +8,7 @@ import { UserOutlined, HomeOutlined, QuestionCircleOutlined } from '@ant-design/
 
 const User = (props) => {
   let [data, changeData] = useState("")
+  let [s, changes] = useState("")
   //渲染数据
   useEffect(async () => {
     try {
@@ -63,7 +64,11 @@ const User = (props) => {
       console.log(err);
     }
   }
-
+  const clearValue = () => {
+    console.log(s, 'sssss')
+    console.log(s.clearableInput.props.allowClear, 'oooo')
+    s.clearableInput.props.allowClear = false
+  }
   const { Search } = Input;
   const { Column, ColumnGroup } = Table;
   const onSearch = value => {
@@ -80,8 +85,11 @@ const User = (props) => {
         size="large"
         // onChange
         onSearch={onSearch}
+        ref={(e) => {
+          changes(e)
+        }}
       />
-      <Button type="primary" className="btn1">
+      <Button type="primary" className="btn1" onClick={() => { clearValue() }}>
         重置
         </Button>
         {/* 新增 */}
@@ -102,6 +110,17 @@ const User = (props) => {
         <Column title="生日" dataIndex="birthday" key="birthday" />
         <Column title="手机号码" dataIndex="phone" key="phone" />
         <Column title="地址" dataIndex="address" key="address" />
+        <Column title="头像" dataIndex="pic" key="pic"
+          render={(text, record) => (
+
+            < Space size="large">
+              {console.log("text", text, text.substring(0, 21))}
+              {console.log("record", record)}
+              <img src={text.substring(0, 21)} alt="" />
+            </Space >
+
+          )}
+        />
 
         <Column
           title="操作"
